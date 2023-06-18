@@ -50,6 +50,9 @@ const browse = async (url: string) => {
 
   await page.goto(url);
   const html = await page.content();
+  const $ = cheerio.load(html);
+
+  $("detecta-adblock").remove();
   await browser.close();
   
   const $ = cheerio.load(html);
